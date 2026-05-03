@@ -1056,79 +1056,14 @@
     </div>
 
     <div class="form-card animate-on-scroll">
-      <form id="enrollForm" onsubmit="handleSubmit(event)">
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label" for="name">姓名<span class="req">*</span></label>
-            <input type="text" id="name" name="name" class="form-input" placeholder="请输入您的姓名" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="phone">联系方式<span class="req">*</span></label>
-            <input type="tel" id="phone" name="phone" class="form-input" placeholder="手机号码" required>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="company">公司名称<span class="req">*</span></label>
-          <input type="text" id="company" name="company" class="form-input" placeholder="请输入您的公司全称" required>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label" for="position">职位<span class="req">*</span></label>
-            <select id="position" name="position" class="form-select" required>
-              <option value="" disabled selected>请选择您的职位</option>
-              <option value="创始人">创始人</option>
-              <option value="董事长">董事长</option>
-              <option value="CEO/总经理">CEO / 总经理</option>
-              <option value="副总裁">副总裁 / 高管</option>
-              <option value="其他">其他</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="industry">所属行业<span class="req">*</span></label>
-            <select id="industry" name="industry" class="form-select" required>
-              <option value="" disabled selected>请选择您的行业</option>
-              <option value="餐饮连锁">餐饮连锁</option>
-              <option value="零售连锁">零售连锁</option>
-              <option value="美业连锁">美业连锁</option>
-              <option value="其他连锁">其他连锁业态</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="scale">门店规模</label>
-          <select id="scale" name="scale" class="form-select">
-            <option value="" disabled selected>请选择门店数量（选填）</option>
-            <option value="20-100家">20 - 100 家</option>
-            <option value="101-500家">101 - 500 家</option>
-            <option value="500家以上">500 家以上</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="pain">最想通过私董会解决的战略问题（选填）</label>
-          <textarea id="pain" name="pain" class="form-textarea" placeholder="例如：AI战略方向不清晰、全员AI能力如何复制、加盟商AI赋能…"></textarea>
-        </div>
-
-        <div class="form-privacy" style="display:flex; align-items:flex-start; gap:10px; margin-bottom:20px;">
-          <input type="checkbox" id="privacy" name="privacy" required style="margin-top:3px; accent-color:var(--gold); width:16px; height:16px; flex-shrink:0;">
-          <label for="privacy" style="font-size:12px; color:rgba(255,255,255,0.45); line-height:1.6; cursor:pointer;">
-            我已阅读并同意隐私政策，同意 AI 产业创新基地通过电话 / 微信与我联系
-          </label>
-        </div>
-
-        <button type="submit" class="form-submit">
-          🔒 立即提交预约
-        </button>
-
-        <p class="form-note">
-          提交后 24 小时内，基地顾问将通过电话或微信与您确认名额<br>
-          每期私董会限额 15 位，先到先得
-        </p>
-      </form>
+      <iframe id="wj-iframe" src="https://wj.qq.com/s2/26539161/b9fe" 
+        style="width:100%;height:760px;border:none;border-radius:16px;background:transparent;overflow:hidden;" 
+        allow="microphone; camera">
+      </iframe>
+      <p class="form-note" style="margin-top:16px;">
+        提交后 24 小时内，基地顾问将通过电话或微信与您确认名额<br>
+        每期私董会限额 15 位，先到先得
+      </p>
     </div>
   </div>
 </section>
