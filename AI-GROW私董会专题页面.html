@@ -6,7 +6,7 @@
 <title>AI-GROW数智增长私董会 | AI产业创新基地</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  
+
   :root {
     --primary: #0A1628;
     --accent: #00D4FF;
@@ -43,7 +43,7 @@
     content: '';
     position: absolute;
     top: -200px; left: -200px; right: -200px; bottom: -200px;
-    background: 
+    background:
       radial-gradient(ellipse at 20% 50%, rgba(245,200,66,0.12) 0%, transparent 50%),
       radial-gradient(ellipse at 80% 20%, rgba(0,212,255,0.1) 0%, transparent 50%),
       radial-gradient(ellipse at 60% 80%, rgba(255,107,53,0.08) 0%, transparent 50%);
@@ -58,7 +58,7 @@
   .hero-grid {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background-image: 
+    background-image:
       linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
       linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
     background-size: 60px 60px;
@@ -413,6 +413,13 @@
     display: none;
   }
 
+  @media (max-width: 600px) {
+    .agenda-left { width: 60px; }
+    .agenda-dot { width: 36px; height: 36px; font-size: 14px; }
+    .agenda-content { padding: 4px 0 30px 12px; }
+    .agenda-name { font-size: 17px; }
+  }
+
   /* ===================== DELIVERABLES ===================== */
   .deliverables {
     background: #0D1E3E;
@@ -565,10 +572,14 @@
     background: rgba(255,255,255,0.04);
     border: 1px solid rgba(245,200,66,0.2);
     border-radius: 24px;
-    padding: 40px;
+    padding: 40px 36px;
     backdrop-filter: blur(20px);
     position: relative;
     overflow: hidden;
+  }
+
+  @media (max-width: 500px) {
+    .form-card { padding: 28px 20px; }
   }
 
   .form-card::before {
@@ -611,6 +622,21 @@
     font-family: inherit;
   }
 
+  .form-select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23F5C842' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+    cursor: pointer;
+  }
+
+  .form-select option {
+    background: #0D1E3E;
+    color: #fff;
+  }
+
   .form-input::placeholder,
   .form-textarea::placeholder {
     color: rgba(255,255,255,0.3);
@@ -622,11 +648,6 @@
     border-color: var(--gold);
     background: rgba(245,200,66,0.06);
     box-shadow: 0 0 0 3px rgba(245,200,66,0.1);
-  }
-
-  .form-select option {
-    background: #1a2f55;
-    color: #fff;
   }
 
   .form-textarea {
@@ -665,12 +686,98 @@
     box-shadow: 0 12px 40px rgba(245,200,66,0.5);
   }
 
+  .form-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+  }
+
   .form-note {
     text-align: center;
     font-size: 12px;
     color: rgba(255,255,255,0.35);
     margin-top: 16px;
     line-height: 1.7;
+  }
+
+  /* Channel radio group */
+  .radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .radio-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    cursor: pointer;
+  }
+
+  .radio-item input[type="radio"] {
+    accent-color: var(--gold);
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Checkbox */
+  .checkbox-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+    cursor: pointer;
+  }
+
+  .checkbox-item input[type="checkbox"] {
+    accent-color: var(--gold);
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .checkbox-item a {
+    color: var(--gold);
+    text-decoration: none;
+  }
+
+  .checkbox-item a:hover {
+    text-decoration: underline;
+  }
+
+  /* Success message */
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  .form-success.show {
+    display: block;
+  }
+
+  .form-success .check-icon {
+    font-size: 64px;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .form-success h3 {
+    font-size: 24px;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .form-success p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.8;
   }
 
   /* ===================== FOOTER ===================== */
@@ -745,6 +852,10 @@
     70% { transform: scale(1.1); }
     100% { opacity: 1; transform: scale(1); }
   }
+
+  @media (max-width: 500px) {
+    .sticky-cta { bottom: 16px; right: 16px; padding: 12px 20px; font-size: 14px; }
+  }
 </style>
 </head>
 <body>
@@ -754,12 +865,12 @@
   <div class="hero-grid"></div>
   <div class="hero-content">
     <div class="hero-badge">AI 产业创新基地 · 创始人闭门会</div>
-    
+
     <h1 class="hero-title">
       <span class="line1">AI-GROW 数智增长</span>
       <span class="line2">私董会</span>
     </h1>
-    
+
     <p class="hero-subtitle">
       高端闭门 · 战略共识 · 智能体直达<br>
       为连锁企业创始人/董事长量身定制的AI数智增长战略私董会
@@ -887,7 +998,7 @@
     </div>
 
     <div class="agenda-timeline">
-      
+
       <div class="agenda-item animate-on-scroll">
         <div class="agenda-left">
           <div class="agenda-dot">G</div>
@@ -1020,7 +1131,7 @@
       </div>
 
       <div class="animate-on-scroll">
-        <div class="section-label" style="display: inline-block; margin-bottom: 16px; font-size:12px; letter-spacing:2px; color:rgba(255,255,255,0.35);">服务过的头部品牌</div>
+        <div class="section-label" style="display:inline-block;margin-bottom:16px;font-size:12px;letter-spacing:2px;color:rgba(255,255,255,0.35);">服务过的头部品牌</div>
         <div class="client-logos">
           <div class="client-logo">北大汇丰商学院</div>
           <div class="client-logo">长江商学院</div>
@@ -1035,7 +1146,7 @@
           <div class="client-logo">波司登</div>
           <div class="client-logo">海澜之家</div>
         </div>
-        <p style="font-size:12px; color:rgba(255,255,255,0.3); margin-top:16px; line-height:1.7;">
+        <p style="font-size:12px;color:rgba(255,255,255,0.3);margin-top:16px;line-height:1.7;">
           荣获「年度最佳人工智能服务平台」<br>
           生态合作：腾讯 AIPC 计划 · 字节 AI 大模型生态联盟 · OPC-AI 产业基金
         </p>
@@ -1055,15 +1166,98 @@
       <p>每期私董会严格限制15位创始人/CEO参与，确保深度交流与高质量交付。填写信息，我们将在24小时内与您取得联系。</p>
     </div>
 
-    <div class="form-card animate-on-scroll">
-      <iframe id="wj-iframe" src="https://wj.qq.com/s2/26539161/b9fe" 
-        style="width:100%;height:760px;border:none;border-radius:16px;background:transparent;overflow:hidden;" 
-        allow="microphone; camera">
-      </iframe>
-      <p class="form-note" style="margin-top:16px;">
-        提交后 24 小时内，基地顾问将通过电话或微信与您确认名额<br>
-        每期私董会限额 15 位，先到先得
-      </p>
+    <div class="form-card animate-on-scroll" id="formCard">
+      <form id="registerForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">姓名 <span class="req">*</span></label>
+            <input class="form-input" name="name" placeholder="您的姓名" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">联系电话 <span class="req">*</span></label>
+            <input class="form-input" name="phone" type="tel" placeholder="联系电话" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">公司名称 <span class="req">*</span></label>
+          <input class="form-input" name="company" placeholder="公司全称" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">您的职位 <span class="req">*</span></label>
+            <select class="form-select" name="position" required>
+              <option value="">请选择职位</option>
+              <option value="董事长">董事长</option>
+              <option value="创始人">创始人</option>
+              <option value="CEO">CEO</option>
+              <option value="总经理">总经理</option>
+              <option value="业务操盘手">业务操盘手</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">所属行业 <span class="req">*</span></label>
+            <select class="form-select" name="industry" required>
+              <option value="">请选择行业</option>
+              <option value="零售连锁">零售连锁</option>
+              <option value="餐饮连锁">餐饮连锁</option>
+              <option value="美业连锁">美业连锁</option>
+              <option value="快消品连锁">快消品连锁</option>
+              <option value="其它连锁">其它连锁</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">门店规模</label>
+          <select class="form-select" name="scale">
+            <option value="">请选择（选填）</option>
+            <option value="1-50家">1-50家</option>
+            <option value="51-100家">51-100家</option>
+            <option value="101-500家">101-500家</option>
+            <option value="500以上">500以上</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">电子邮箱</label>
+          <input class="form-input" name="email" type="email" placeholder="选填">
+        </div>
+        <div class="form-group">
+          <label class="form-label">最想通过本次私董会解决的核心战略问题？</label>
+          <textarea class="form-textarea" name="topic" placeholder="选填，帮助我们更好地准备"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">您是通过什么渠道了解到本次私董会的？</label>
+          <div class="radio-group">
+            <label class="radio-item">
+              <input type="radio" name="channel" value="公众号"> 公众号
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="channel" value="视频号"> 视频号
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="channel" value="朋友推荐"> 朋友推荐
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="channel" value="其他"> 其他
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="checkbox-item">
+            <input type="checkbox" name="privacy" required>
+            <span>我已阅读并同意《隐私政策》，知晓我的个人信息将被用于本次私董会预约对接。</span>
+          </label>
+        </div>
+        <button type="submit" class="form-submit" id="submitBtn">🔒 立即提交预约</button>
+        <p class="form-note">
+          提交后 24 小时内，基地顾问将通过电话或微信与您确认名额<br>
+          每期私董会限额 15 位，先到先得
+        </p>
+      </form>
+      <div class="form-success" id="formSuccess">
+        <span class="check-icon">✅</span>
+        <h3>预约成功！</h3>
+        <p>我们将在 24 小时内通过电话或微信与您联系确认名额。<br>请保持手机畅通，期待与您深度共创。</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1082,19 +1276,142 @@
     document.getElementById('register').scrollIntoView({ behavior: 'smooth' });
   }
 
-  function handleSubmit(e) {
+  // Question ID mapping for survey 26539244
+  const Q = {
+    name:      'q-1-4849',   // 姓名 text
+    phone:     'q-2-32dc',   // 联系电话 text
+    company:   'q-3-7e93',   // 公司名称 text
+    position:  'q-4-6e26',   // 职位 select  o-101-d6d4/...
+    industry:  'q-5-65b8',   // 所属行业 select  o-101-80d5/...
+    scale:     'q-6-69e1',   // 门店规模 select  o-101-7be1/...
+    topic:     'q-7-4964',   // 核心战略问题 textarea
+    email:     'q-8-c5b5',   // 电子邮箱 text
+    channel:   'q-9-651a',   // 了解渠道 radio  o-101-6d31/...
+  };
+
+  const OPT = {
+    position: {
+      '董事长':     'o-101-d6d4',
+      '创始人':     'o-102-1d3f',
+      'CEO':        'o-103-8fa6',
+      '总经理':     'o-104-aa6e',
+      '业务操盘手': 'o-105-9bb8',
+    },
+    industry: {
+      '零售连锁':   'o-101-80d5',
+      '餐饮连锁':   'o-102-2439',
+      '美业连锁':   'o-103-542c',
+      '快消品连锁': 'o-104-1322',
+      '其它连锁':   'o-105-4f0b',
+    },
+    scale: {
+      '1-50家':    'o-101-7be1',
+      '51-100家':  'o-102-72f9',
+      '101-500家': 'o-103-b7d9',
+      '500以上':   'o-104-c117',
+    },
+    channel: {
+      '公众号':    'o-101-6d31',
+      '视频号':    'o-102-2a25',
+      '朋友推荐':  'o-103-105f',
+      '其他':      'o-104-78a8',
+    },
+  };
+
+  document.getElementById('registerForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    const btn = document.querySelector('.form-submit');
+
+    const btn = document.getElementById('submitBtn');
     btn.textContent = '提交中...';
     btn.disabled = true;
-    
-    setTimeout(() => {
-      alert('预约成功！我们将在24小时内通过电话或微信与您联系确认名额。请保持手机畅通。');
-      btn.textContent = '🔒 立即提交预约';
-      btn.disabled = false;
-      e.target.reset();
-    }, 1200);
-  }
+
+    const fd = new FormData(this);
+    const now = Math.floor(Date.now() / 1000);
+
+    // Build answer pages
+    const questions = [
+      { id: Q.name,    type: 'text',    text: fd.get('name') || '' },
+      { id: Q.phone,   type: 'text',    text: fd.get('phone') || '' },
+      { id: Q.company, type: 'text',    text: fd.get('company') || '' },
+    ];
+
+    // Position (select)
+    const pos = fd.get('position');
+    if (pos && OPT.position[pos]) {
+      questions.push({
+        id: Q.position, type: 'select',
+        options: [{ id: OPT.position[pos], checked: 1, text: pos }]
+      });
+    }
+
+    // Industry (select)
+    const ind = fd.get('industry');
+    if (ind && OPT.industry[ind]) {
+      questions.push({
+        id: Q.industry, type: 'select',
+        options: [{ id: OPT.industry[ind], checked: 1, text: ind }]
+      });
+    }
+
+    // Scale (select, optional)
+    const sc = fd.get('scale');
+    if (sc && OPT.scale[sc]) {
+      questions.push({
+        id: Q.scale, type: 'select',
+        options: [{ id: OPT.scale[sc], checked: 1, text: sc }]
+      });
+    }
+
+    // Topic (textarea)
+    questions.push({ id: Q.topic, type: 'textarea', text: fd.get('topic') || '' });
+
+    // Email (text)
+    questions.push({ id: Q.email, type: 'text', text: fd.get('email') || '' });
+
+    // Channel (radio)
+    const ch = fd.get('channel');
+    if (ch && OPT.channel[ch]) {
+      questions.push({
+        id: Q.channel, type: 'radio',
+        options: [{ id: OPT.channel[ch], checked: 1, text: ch }]
+      });
+    }
+
+    const payload = {
+      respondent_id: 0,
+      answer: {
+        survey_type: 0,
+        jsonLoadTime: 60,
+        time: now,
+        ua: navigator.userAgent,
+        referrer: window.location.href,
+        uid: '',
+        sid: '',
+        is_update: false,
+        pages: [{ id: 'p-1-396b', questions: questions }]
+      }
+    };
+
+    try {
+      const resp = await fetch('https://open.wj.qq.com/api/surveys/26539244/answers', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer wjpt_a16f8c09b720d315208f2eb3bc4043b88646101cda1ddd10f5959ba2702124ff'
+        },
+        body: JSON.stringify(payload)
+      });
+      const result = await resp.json().catch(() => ({}));
+      console.log('Survey submit result:', result);
+    } catch (err) {
+      console.warn('Survey submit failed:', err);
+    }
+
+    // Show success
+    document.getElementById('registerForm').style.display = 'none';
+    document.getElementById('formSuccess').classList.add('show');
+    window.scrollTo({ top: document.getElementById('formCard').offsetTop - 80, behavior: 'smooth' });
+  });
 
   // Intersection Observer for scroll animations
   const observer = new IntersectionObserver((entries) => {
