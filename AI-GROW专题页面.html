@@ -1809,48 +1809,6 @@
     document.getElementById('register').scrollIntoView({ behavior: 'smooth' });
   }
 
-  // Question ID mapping for survey 26539251
-  const Q = {
-    name:      'q-1-9ebc',
-    phone:     'q-2-fafe',
-    company:   'q-3-88b5',
-    position:  'q-4-1d7f',
-    industry:  'q-5-0977',
-    scale:     'q-6-318b',
-    email:     'q-7-e33e',
-    topic:     'q-8-a76f',
-    channel:   'q-9-369e',
-  };
-
-  const OPT = {
-    position: {
-      '董事长':    'o-101-0de8',
-      '创始人':    'o-102-6b99',
-      'CEO':       'o-103-8935',
-      '总经理':    'o-104-7299',
-      '业务操盘手': 'o-105-1ac5',
-    },
-    industry: {
-      '零售连锁':   'o-101-2163',
-      '餐饮连锁':   'o-102-fb16',
-      '美业连锁':   'o-103-c43d',
-      '快消品连锁': 'o-104-3504',
-      '其它连锁':   'o-105-7d51',
-    },
-    scale: {
-      '1-50家':    'o-101-8d2b',
-      '51-100家':  'o-102-e86d',
-      '101-500家': 'o-103-1293',
-      '500以上':   'o-104-6afa',
-    },
-    channel: {
-      '公众号':    'o-101-69e4',
-      '视频号':    'o-102-2c81',
-      '朋友推荐':  'o-103-b218',
-      '其他':      'o-104-af4b',
-    },
-  };
-
   document.getElementById('registerForm').addEventListener('submit', async function(e) {
     e.preventDefault();
 
@@ -1859,65 +1817,28 @@
     btn.disabled = true;
 
     const fd = new FormData(this);
-    const now = Math.floor(Date.now() / 1000);
 
-    const questions = [
-      { id: Q.name,     type: 'text',    text: fd.get('name') || '' },
-      { id: Q.phone,    type: 'text',    text: fd.get('phone') || '' },
-      { id: Q.company,  type: 'text',    text: fd.get('company') || '' },
-    ];
-
-    const pos = fd.get('position');
-    if (pos && OPT.position[pos]) {
-      questions.push({ id: Q.position, type: 'select', options: [{ id: OPT.position[pos], checked: 1, text: pos }] });
-    }
-
-    const ind = fd.get('industry');
-    if (ind && OPT.industry[ind]) {
-      questions.push({ id: Q.industry, type: 'select', options: [{ id: OPT.industry[ind], checked: 1, text: ind }] });
-    }
-
-    const sc = fd.get('scale');
-    if (sc && OPT.scale[sc]) {
-      questions.push({ id: Q.scale, type: 'select', options: [{ id: OPT.scale[sc], checked: 1, text: sc }] });
-    }
-
-    questions.push({ id: Q.email, type: 'text',     text: fd.get('email') || '' });
-    questions.push({ id: Q.topic, type: 'textarea', text: fd.get('topic') || '' });
-
-    const ch = fd.get('channel');
-    if (ch && OPT.channel[ch]) {
-      questions.push({ id: Q.channel, type: 'radio', options: [{ id: OPT.channel[ch], checked: 1, text: ch }] });
-    }
-
-    const payload = {
-      respondent_id: 0,
-      answer: {
-        survey_type: 0,
-        jsonLoadTime: 60,
-        time: now,
-        ua: navigator.userAgent,
-        referrer: window.location.href,
-        uid: '',
-        sid: '',
-        is_update: false,
-        pages: [{ id: 'p-1-e84a', questions: questions }]
-      }
-    };
-
+    // Submit to Formspree
     try {
-      const resp = await fetch('https://open.wj.qq.com/api/surveys/26539251/answers', {
+      const formData = new FormData();
+      formData.append('name', fd.get('name') || '');
+      formData.append('phone', fd.get('phone') || '');
+      formData.append('company', fd.get('company') || '');
+      formData.append('position', fd.get('position') || '');
+      formData.append('industry', fd.get('industry') || '');
+      formData.append('scale', fd.get('scale') || '');
+      formData.append('email', fd.get('email') || '');
+      formData.append('topic', fd.get('topic') || '');
+      formData.append('channel', fd.get('channel') || '');
+      formData.append('_subject', 'AI-GROW实战营新报名通知');
+
+      await fetch('https://formspree.io/f/xzdoeezq', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer wjpt_a16f8c09b720d315208f2eb3bc4043b88646101cda1ddd10f5959ba2702124ff'
-        },
-        body: JSON.stringify(payload)
+        body: formData,
+        headers: { 'Accept': 'application/json' }
       });
-      const result = await resp.json().catch(() => ({}));
-      console.log('Survey submit result:', result);
     } catch (err) {
-      console.warn('Survey submit failed:', err);
+      console.warn('Formspree submit failed:', err);
     }
 
     document.getElementById('registerForm').style.display = 'none';

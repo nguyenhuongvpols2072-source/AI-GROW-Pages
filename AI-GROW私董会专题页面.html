@@ -1276,48 +1276,6 @@
     document.getElementById('register').scrollIntoView({ behavior: 'smooth' });
   }
 
-  // Question ID mapping for survey 26539244
-  const Q = {
-    name:      'q-1-4849',   // 姓名 text
-    phone:     'q-2-32dc',   // 联系电话 text
-    company:   'q-3-7e93',   // 公司名称 text
-    position:  'q-4-6e26',   // 职位 select  o-101-d6d4/...
-    industry:  'q-5-65b8',   // 所属行业 select  o-101-80d5/...
-    scale:     'q-6-69e1',   // 门店规模 select  o-101-7be1/...
-    topic:     'q-7-4964',   // 核心战略问题 textarea
-    email:     'q-8-c5b5',   // 电子邮箱 text
-    channel:   'q-9-651a',   // 了解渠道 radio  o-101-6d31/...
-  };
-
-  const OPT = {
-    position: {
-      '董事长':     'o-101-d6d4',
-      '创始人':     'o-102-1d3f',
-      'CEO':        'o-103-8fa6',
-      '总经理':     'o-104-aa6e',
-      '业务操盘手': 'o-105-9bb8',
-    },
-    industry: {
-      '零售连锁':   'o-101-80d5',
-      '餐饮连锁':   'o-102-2439',
-      '美业连锁':   'o-103-542c',
-      '快消品连锁': 'o-104-1322',
-      '其它连锁':   'o-105-4f0b',
-    },
-    scale: {
-      '1-50家':    'o-101-7be1',
-      '51-100家':  'o-102-72f9',
-      '101-500家': 'o-103-b7d9',
-      '500以上':   'o-104-c117',
-    },
-    channel: {
-      '公众号':    'o-101-6d31',
-      '视频号':    'o-102-2a25',
-      '朋友推荐':  'o-103-105f',
-      '其他':      'o-104-78a8',
-    },
-  };
-
   document.getElementById('registerForm').addEventListener('submit', async function(e) {
     e.preventDefault();
 
@@ -1326,85 +1284,28 @@
     btn.disabled = true;
 
     const fd = new FormData(this);
-    const now = Math.floor(Date.now() / 1000);
 
-    // Build answer pages
-    const questions = [
-      { id: Q.name,    type: 'text',    text: fd.get('name') || '' },
-      { id: Q.phone,   type: 'text',    text: fd.get('phone') || '' },
-      { id: Q.company, type: 'text',    text: fd.get('company') || '' },
-    ];
-
-    // Position (select)
-    const pos = fd.get('position');
-    if (pos && OPT.position[pos]) {
-      questions.push({
-        id: Q.position, type: 'select',
-        options: [{ id: OPT.position[pos], checked: 1, text: pos }]
-      });
-    }
-
-    // Industry (select)
-    const ind = fd.get('industry');
-    if (ind && OPT.industry[ind]) {
-      questions.push({
-        id: Q.industry, type: 'select',
-        options: [{ id: OPT.industry[ind], checked: 1, text: ind }]
-      });
-    }
-
-    // Scale (select, optional)
-    const sc = fd.get('scale');
-    if (sc && OPT.scale[sc]) {
-      questions.push({
-        id: Q.scale, type: 'select',
-        options: [{ id: OPT.scale[sc], checked: 1, text: sc }]
-      });
-    }
-
-    // Topic (textarea)
-    questions.push({ id: Q.topic, type: 'textarea', text: fd.get('topic') || '' });
-
-    // Email (text)
-    questions.push({ id: Q.email, type: 'text', text: fd.get('email') || '' });
-
-    // Channel (radio)
-    const ch = fd.get('channel');
-    if (ch && OPT.channel[ch]) {
-      questions.push({
-        id: Q.channel, type: 'radio',
-        options: [{ id: OPT.channel[ch], checked: 1, text: ch }]
-      });
-    }
-
-    const payload = {
-      respondent_id: 0,
-      answer: {
-        survey_type: 0,
-        jsonLoadTime: 60,
-        time: now,
-        ua: navigator.userAgent,
-        referrer: window.location.href,
-        uid: '',
-        sid: '',
-        is_update: false,
-        pages: [{ id: 'p-1-396b', questions: questions }]
-      }
-    };
-
+    // Submit to Formspree
     try {
-      const resp = await fetch('https://open.wj.qq.com/api/surveys/26539244/answers', {
+      const formData = new FormData();
+      formData.append('name', fd.get('name') || '');
+      formData.append('phone', fd.get('phone') || '');
+      formData.append('company', fd.get('company') || '');
+      formData.append('position', fd.get('position') || '');
+      formData.append('industry', fd.get('industry') || '');
+      formData.append('scale', fd.get('scale') || '');
+      formData.append('email', fd.get('email') || '');
+      formData.append('topic', fd.get('topic') || '');
+      formData.append('channel', fd.get('channel') || '');
+      formData.append('_subject', 'AI-GROW私董会新预约通知');
+
+      await fetch('https://formspree.io/f/xzdoeezq', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer wjpt_a16f8c09b720d315208f2eb3bc4043b88646101cda1ddd10f5959ba2702124ff'
-        },
-        body: JSON.stringify(payload)
+        body: formData,
+        headers: { 'Accept': 'application/json' }
       });
-      const result = await resp.json().catch(() => ({}));
-      console.log('Survey submit result:', result);
     } catch (err) {
-      console.warn('Survey submit failed:', err);
+      console.warn('Formspree submit failed:', err);
     }
 
     // Show success
