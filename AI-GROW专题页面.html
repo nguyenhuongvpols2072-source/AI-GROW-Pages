@@ -1195,6 +1195,108 @@
     background: linear-gradient(90deg, transparent, rgba(0,212,255,0.2), transparent);
     margin: 0 auto;
   }
+  /* ===== 往期培训案例轮播 ===== */
+  .carousel-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 16px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .carousel-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+  }
+  .carousel-slide {
+    min-width: 100%;
+    position: relative;
+  }
+  .carousel-slide img {
+    width: 100%;
+    height: auto;
+    max-height: 520px;
+    object-fit: contain;
+    display: block;
+    background: #0a0a0a;
+  }
+  .carousel-caption {
+    padding: 14px 20px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    letter-spacing: 1px;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.15);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .carousel-btn:hover {
+    background: rgba(45,157,78,0.7);
+    border-color: rgba(45,157,78,0.9);
+  }
+  .carousel-btn-prev { left: 12px; }
+  .carousel-btn-next { right: 12px; }
+  .carousel-dots {
+    position: absolute;
+    bottom: 56px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+  }
+  .carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+  }
+  .carousel-dot.active {
+    background: #2D9D4E;
+    width: 24px;
+    border-radius: 4px;
+  }
+  .carousel-dot:hover {
+    background: rgba(255,255,255,0.6);
+  }
+  @media (max-width: 640px) {
+    .carousel-wrapper { border-radius: 12px; }
+    .carousel-slide img { max-height: 300px; }
+    .carousel-btn { width: 36px; height: 36px; font-size: 14px; }
+    .carousel-btn-prev { left: 8px; }
+    .carousel-btn-next { right: 8px; }
+    .carousel-caption { font-size: 12px; padding: 10px 14px; }
+    .carousel-dots { bottom: 46px; gap: 6px; }
+    .carousel-dot { width: 6px; height: 6px; }
+    .carousel-dot.active { width: 18px; }
+  }
 </style>
 </head>
 <body>
@@ -1663,6 +1765,59 @@
         </div>
       </div>
 
+      <!-- 往期培训案例轮播模块 -->
+      <div class="animate-on-scroll" style="margin-bottom:60px;">
+        <div class="course-section-title" style="margin-bottom:32px;">往期培训案例</div>
+        <div class="carousel-wrapper">
+          <div class="carousel-track" id="carouselTrack">
+            <div class="carousel-slide">
+              <img src="images/1、绝味集团AI-GROW数智增长共创实战营.JPG" alt="绝味集团AI-GROW数智增长共创实战营" loading="lazy">
+              <div class="carousel-caption">绝味集团 AI-GROW数智增长共创实战营</div>
+            </div>
+            <div class="carousel-slide">
+              <img src="images/2、绝味AI实战应用技巧进阶营.jpg" alt="绝味AI实战应用技巧进阶营" loading="lazy">
+              <div class="carousel-caption">绝味集团 AI实战应用技巧进阶营</div>
+            </div>
+            <div class="carousel-slide">
+              <img src="images/3、小龙坎AI数智增长战略闭门会.jpg" alt="小龙坎AI数智增长战略闭门会" loading="lazy">
+              <div class="carousel-caption">小龙坎 AI数智增长战略闭门会</div>
+            </div>
+            <div class="carousel-slide">
+              <img src="images/4、国民泡菜头部品牌丨吉香居核心高管团队共探AI数智增长战略闭门会.jpg" alt="吉香居AI数智增长战略闭门会" loading="lazy">
+              <div class="carousel-caption">吉香居 核心高管团队共探AI数智增长战略闭门会</div>
+            </div>
+            <div class="carousel-slide">
+              <img src="images/5、连锁品牌丨廖记食品内部AI培训营.jpg" alt="廖记食品内部AI培训营" loading="lazy">
+              <div class="carousel-caption">廖记食品 连锁品牌内部AI培训营</div>
+            </div>
+            <div class="carousel-slide">
+              <img src="images/6、连锁品牌馄饨丨第九味AI内训课 .png" alt="第九味AI内训课" loading="lazy">
+              <div class="carousel-caption">第九味 连锁品牌馄饨AI内训课</div>
+            </div>
+            <div class="carousel-slide">
+              <img src="images/7、森马Semir  AI基地  YAYA鸭鸭   AI数智增长战略闭门会.jpg" alt="森马/鸭鸭AI数智增长战略闭门会" loading="lazy">
+              <div class="carousel-caption">森马Semir / YAYA鸭鸭 AI数智增长战略闭门会</div>
+            </div>
+            <div class="carousel-slide">
+              <img src="images/8、AI养虾大会-零售连锁老板OpenClaw龙虾私董会.jpg" alt="AI养虾大会私董会" loading="lazy">
+              <div class="carousel-caption">AI养虾大会 零售连锁老板龙虾私董会</div>
+            </div>
+            <div class="carousel-slide">
+              <img src="images/9、北大汇丰商学院DBA首期养虾大会.JPG" alt="北大汇丰商学院DBA首期养虾大会" loading="lazy">
+              <div class="carousel-caption">北大汇丰商学院 DBA首期养虾大会</div>
+            </div>
+            <div class="carousel-slide">
+              <img src="images/10、AI基地应邀𝐀𝐈+创新科技大会分享.jpg" alt="AI基地应邀AI+创新科技大会分享" loading="lazy">
+              <div class="carousel-caption">AI基地 应邀AI+创新科技大会分享</div>
+            </div>
+          </div>
+          <button class="carousel-btn carousel-btn-prev" id="carouselPrev" aria-label="上一张">&#10094;</button>
+          <button class="carousel-btn carousel-btn-next" id="carouselNext" aria-label="下一张">&#10095;</button>
+          <div class="carousel-dots" id="carouselDots"></div>
+        </div>
+      </div>
+      <!-- 往期培训案例轮播模块结束 -->
+
       <div class="animate-on-scroll">
         <div class="course-section-title" style="margin-bottom:16px; font-size:12px; letter-spacing:2px; color:rgba(255,255,255,0.35);">服务过的头部品牌</div>
         <div class="client-logos">
@@ -1873,6 +2028,81 @@
       stickyCta.style.pointerEvents = 'auto';
     }
   });
+</script>
+
+<!-- 轮播逻辑 -->
+<script>
+(function() {
+  const track = document.getElementById('carouselTrack');
+  const prevBtn = document.getElementById('carouselPrev');
+  const nextBtn = document.getElementById('carouselNext');
+  const dotsContainer = document.getElementById('carouselDots');
+  const slides = track.querySelectorAll('.carousel-slide');
+  const totalSlides = slides.length;
+  let currentIndex = 0;
+  let autoPlayTimer = null;
+  const autoPlayInterval = 5000;
+
+  // 生成指示点
+  for (let i = 0; i < totalSlides; i++) {
+    const dot = document.createElement('button');
+    dot.classList.add('carousel-dot');
+    if (i === 0) dot.classList.add('active');
+    dot.setAttribute('aria-label', '跳转到第' + (i + 1) + '张');
+    dot.addEventListener('click', function() { goToSlide(i); });
+    dotsContainer.appendChild(dot);
+  }
+  const dots = dotsContainer.querySelectorAll('.carousel-dot');
+
+  function updateSlide() {
+    track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+    dots.forEach(function(d, i) {
+      d.classList.toggle('active', i === currentIndex);
+    });
+  }
+
+  function goToSlide(index) {
+    currentIndex = index;
+    if (currentIndex < 0) currentIndex = totalSlides - 1;
+    if (currentIndex >= totalSlides) currentIndex = 0;
+    updateSlide();
+    resetAutoPlay();
+  }
+
+  function nextSlide() { goToSlide(currentIndex + 1); }
+  function prevSlide() { goToSlide(currentIndex - 1); }
+
+  prevBtn.addEventListener('click', prevSlide);
+  nextBtn.addEventListener('click', nextSlide);
+
+  // 触摸滑动支持
+  let touchStartX = 0;
+  let touchEndX = 0;
+  track.addEventListener('touchstart', function(e) {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+  track.addEventListener('touchend', function(e) {
+    touchEndX = e.changedTouches[0].screenX;
+    if (touchStartX - touchEndX > 50) nextSlide();
+    if (touchEndX - touchStartX > 50) prevSlide();
+  }, { passive: true });
+
+  // 自动轮播
+  function startAutoPlay() {
+    autoPlayTimer = setInterval(nextSlide, autoPlayInterval);
+  }
+  function resetAutoPlay() {
+    clearInterval(autoPlayTimer);
+    startAutoPlay();
+  }
+
+  // 鼠标悬停暂停
+  const wrapper = document.querySelector('.carousel-wrapper');
+  wrapper.addEventListener('mouseenter', function() { clearInterval(autoPlayTimer); });
+  wrapper.addEventListener('mouseleave', startAutoPlay);
+
+  startAutoPlay();
+})();
 </script>
 
 </body>
