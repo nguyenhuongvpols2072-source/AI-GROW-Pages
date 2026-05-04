@@ -7,6 +7,44 @@
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
+  /* ====== 左上角 Logo ====== */
+  .top-logo {
+    position: fixed;
+    top: 20px;
+    left: 24px;
+    z-index: 9999;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    background: rgba(10,22,40,0.7);
+    backdrop-filter: blur(8px);
+    border-radius: 10px;
+    padding: 6px 14px;
+    border: 1px solid rgba(0,212,255,0.15);
+    transition: all 0.3s ease;
+  }
+  .top-logo:hover {
+    border-color: rgba(0,212,255,0.5);
+    box-shadow: 0 4px 20px rgba(0,212,255,0.15);
+  }
+  .top-logo img {
+    height: 36px;
+    width: auto;
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .top-logo {
+      height: 40px;
+      padding: 4px 10px;
+      top: 12px;
+      left: 12px;
+    }
+    .top-logo img {
+      height: 28px;
+    }
+  }
+  
   :root {
     --primary: #0A1628;
     --accent: #00D4FF;
@@ -967,6 +1005,11 @@
 </style>
 </head>
 <body>
+
+<!-- ====== 左上角 Logo ====== -->
+<a href="#" class="top-logo">
+  <img src="images/最新logo-白底.png" alt="AI产业创新基地">
+</a>
 
 <!-- ====== HERO ====== -->
 <section class="hero">
