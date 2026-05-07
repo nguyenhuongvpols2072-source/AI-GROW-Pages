@@ -1276,19 +1276,30 @@
       formData.append('channel', fd.get('channel') || '');
       formData.append('_subject', 'AI-GROW私董会新预约通知');
 
-      await fetch('https://formspree.io/f/mjglyyge', {
+      const resp = await fetch('https://formspree.io/f/mjglyyge', {
         method: 'POST',
         body: formData,
         headers: { 'Accept': 'application/json' }
       });
+      const result = await resp.json();
+
+      if (!resp.ok || !result.ok) {
+        btn.textContent = '🔒 立即提交预约';
+        btn.disabled = false;
+        alert('提交失败，请稍后重试或直接联系客服。');
+        return;
+      }
+
+      // Show success
+      document.getElementById('registerForm').style.display = 'none';
+      document.getElementById('formSuccess').classList.add('show');
+      window.scrollTo({ top: document.getElementById('formCard').offsetTop - 80, behavior: 'smooth' });
     } catch (err) {
       console.warn('Formspree submit failed:', err);
+      btn.textContent = '🔒 立即提交预约';
+      btn.disabled = false;
+      alert('网络异常，提交未成功，请稍后重试或直接联系客服。');
     }
-
-    // Show success
-    document.getElementById('registerForm').style.display = 'none';
-    document.getElementById('formSuccess').classList.add('show');
-    window.scrollTo({ top: document.getElementById('formCard').offsetTop - 80, behavior: 'smooth' });
   });
 
   // Intersection Observer for scroll animations
