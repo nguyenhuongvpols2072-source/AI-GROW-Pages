@@ -400,10 +400,6 @@
     align-items: center;
   }
 
-  @media (max-width: 768px) {
-    .about-grid { grid-template-columns: 1fr; gap: 30px; }
-  }
-
   .about-left h3 {
     font-size: 20px;
     font-weight: 700;
@@ -840,17 +836,6 @@
   .carousel-dot:hover {
     background: rgba(255,255,255,0.6);
   }
-  @media (max-width: 640px) {
-    .carousel-wrapper { border-radius: 12px; }
-    .carousel-slide img { max-height: 300px; }
-    .carousel-btn { width: 36px; height: 36px; font-size: 14px; }
-    .carousel-btn-prev { left: 8px; }
-    .carousel-btn-next { right: 8px; }
-    .carousel-caption { font-size: 12px; padding: 10px 14px; }
-    .carousel-dots { bottom: 46px; gap: 6px; }
-    .carousel-dot { width: 6px; height: 6px; }
-    .carousel-dot.active { width: 18px; }
-  }
 
   /* 荣誉生态信息 */
   .honor-info {
@@ -946,6 +931,9 @@
     }
 
     /* About区域 */
+    .about {
+      padding: 50px 16px;
+    }
     .about-grid {
       grid-template-columns: 1fr;
       gap: 36px;
@@ -953,6 +941,7 @@
     }
     .about-left h3 {
       font-size: 17px;
+      margin-bottom: 10px;
     }
     .about-left p {
       font-size: 14px;
@@ -960,17 +949,52 @@
       margin-bottom: 16px;
     }
     .about-stats {
-      gap: 10px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
     }
     .about-stat {
-      padding: 12px 8px;
+      padding: 12px 6px;
       border-radius: 10px;
     }
     .about-stat-num {
-      font-size: 22px;
+      font-size: 20px;
     }
     .about-stat-label {
+      font-size: 10px;
+    }
+
+    /* 往期培训案例 */
+    .about .section-label {
       font-size: 11px;
+      margin-bottom: 20px;
+    }
+    .carousel-wrapper {
+      border-radius: 12px;
+    }
+    .carousel-slide img {
+      max-height: 240px;
+    }
+    .carousel-btn {
+      width: 34px;
+      height: 34px;
+      font-size: 13px;
+    }
+    .carousel-btn-prev { left: 8px; }
+    .carousel-btn-next { right: 8px; }
+    .carousel-caption {
+      font-size: 11px;
+      padding: 8px 12px;
+    }
+    .carousel-dots {
+      bottom: 40px;
+      gap: 5px;
+    }
+    .carousel-dot {
+      width: 6px;
+      height: 6px;
+    }
+    .carousel-dot.active {
+      width: 16px;
     }
 
     /* 荣誉信息 */
